@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<modelVersion>4.0.0</modelVersion>
+
+<artifactId>dp-demo-provider</artifactId>
+<packaging>jar</packaging>
+
+<parent>
+    <groupId>com.kennywgx</groupId>
+    <artifactId>dp-demo</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+</parent>
+
+<properties>
+    <docker.repository>${project.parent.name}</docker.repository>
+    <docker.tag>${project.version}</docker.tag>
+</properties>
+
+<dependencies>
+    <dependency>
+        <groupId>com.kennywgx</groupId>
+        <artifactId>dp-demo-api</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+        
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>joda-time</groupId>
+        <artifactId>joda-time</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>cn.hutool</groupId>
+        <artifactId>hutool-all</artifactId>
+        <version>4.5.16</version>
+    </dependency>
+    <dependency>
+        <groupId>com.google.guava</groupId>
+        <artifactId>guava</artifactId>
+        <version>28.0-jre</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-lang3</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>com.github.taccisum</groupId>
+        <artifactId>swagger-spring-boot2-starter</artifactId>
+        <version>1.0.1</version>
+    </dependency>
+    <dependency>
+        <groupId>com.github.deepexi</groupId>
+        <artifactId>pojo-converter-spring-boot-starter</artifactId>
+        <version>1.0.0-release</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>com.h2database</groupId>
+        <artifactId>h2</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>com.baomidou</groupId>
+        <artifactId>mybatis-plus-boot-starter</artifactId>
+        <version>3.1.2</version>
+    </dependency>
+    <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid-spring-boot-starter</artifactId>
+        <version>1.1.17</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-openfeign</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+        <version>0.9.0.RELEASE</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-amqp</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>com.ctrip.framework.apollo</groupId>
+        <artifactId>apollo-client</artifactId>
+        <version>1.4.0</version>
+    </dependency>
+    <dependency>
+        <groupId>com.auth0</groupId>
+        <artifactId>java-jwt</artifactId>
+        <version>3.8.1</version>
+    </dependency>
+    <dependency>
+        <groupId>com.github.taccisum</groupId>
+        <artifactId>shiro-starter</artifactId>
+        <version>2.2.0</version>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-data-redis</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-cache</artifactId>
+    </dependency>
+    <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>fastjson</artifactId>
+        <version>1.2.62</version>
+    </dependency>
+    <dependency>
+        <groupId>org.apache.skywalking</groupId>
+        <artifactId>apm-toolkit-logback-1.x</artifactId>
+        <version>6.4.0</version>
+    </dependency>
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-devtools</artifactId>
+        <optional>true</optional>
+    </dependency>
+    <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>io.codearte.jfairy</groupId>
+        <artifactId>jfairy</artifactId>
+        <version>0.5.9</version>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
+
+<build>
+    <finalName>app</finalName>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>repackage</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+        
+        <plugin>
+            <groupId>com.google.cloud.tools</groupId>
+            <artifactId>jib-maven-plugin</artifactId>
+            <version>2.0.0</version>
+            <configuration>
+                <from>
+                    <image>openjdk:8</image>
+                </from>
+                <to>
+                    <image>${docker.repository}:${docker.tag}</image>
+                </to>
+                <container>
+                    <appRoot>/home</appRoot>
+                    <workingDirectory>/home</workingDirectory>
+                    <entrypoint>
+                        <arg>/bin/sh</arg>
+                        <arg>-c</arg>
+                        <arg>/entrypoint.sh</arg>
+                    </entrypoint>
+                    <creationTime>USE_CURRENT_TIMESTAMP</creationTime>
+                </container>
+                <extraDirectories>
+                    <paths>scripts</paths>
+                    <permissions>
+                        <permission>
+                            <file>/entrypoint.sh</file>
+                            <mode>755</mode>
+                        </permission>
+                    </permissions>
+                </extraDirectories>
+                <allowInsecureRegistries>false</allowInsecureRegistries>
+            </configuration>
+            <executions>
+                <execution>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>dockerBuild</goal>
+                    </goals>
+                </execution>
+            </executions>
+        </plugin>
+        
+    </plugins>
+</build>
+</project>

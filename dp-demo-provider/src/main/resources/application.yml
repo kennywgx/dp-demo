@@ -1,0 +1,51 @@
+spring:
+  application:
+    name: dp-demo
+  profiles:
+    active: local
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    druid:
+      web-stat-filter:
+        enabled: true
+      stat-view-servlet:
+        enabled: true
+        login-username: root
+        login-password: root
+    url:
+  redis:
+    timeout: 1000
+swagger:
+  base-package: com.kennywgx.controller
+  info:
+    title: dp-demo
+server:
+  error:
+    include-stacktrace: always
+    include-exception: true
+logging:
+  file: '/logs/${spring.application.name}.log'
+management:
+  server:
+    port: 8081
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+eureka:
+  client:
+    service-url:
+      defaultZone: 'http://user:pass@127.0.0.1:8761/eureka/'
+mybatis:
+  mapper-locations: 'classpath:mapper/*.xml'
+feign:
+  sentinel:
+    enabled: true
+shiro:
+  web:
+    mode: stateless
+    filter-chain-definition:
+      authc:
+        - /v1/**
+      anon:
+        - /**
