@@ -1,29 +1,33 @@
 package com.kennywgx.controller;
 
+import com.github.taccisum.shiro.web.autoconfigure.stateless.support.jwt.JWTManager;
 import com.kennywgx.domain.UserDO;
 import com.kennywgx.mapper.UserMapper;
+import com.kennywgx.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("user")
+@RequestMapping("v1/user")
 @Payload
 public class UserController {
-    @Autowired
-    private UserMapper mapper;
 
-//    @PostMapping("login")
-//    public String login(String username, String password) {
-//        mapper.selectList()
-//    }
+    public final static String issuer = "one";
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private JWTManager jwtManager;
 
     @GetMapping("/")
     public List<UserDO> listAll() {
-        return mapper.selectAll();
+        return userService.listAll();
     }
 
 }

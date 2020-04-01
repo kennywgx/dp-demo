@@ -48,9 +48,10 @@ public class ApplicationErrorAttributes extends DefaultErrorAttributes {
             resultAttributes.put("code", "-2");
         }
 
-        if (includeStackTrace) {
+        // 不输出错误的stack信息
+        /*if (includeStackTrace) {
             resultAttributes.put("stack", attributes.get("trace"));
-        }
+        }*/
 
         return resultAttributes;
     }

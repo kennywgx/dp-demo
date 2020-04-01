@@ -7,6 +7,8 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import com.kennywgx.config.mybatisplus.IntegerList;
 import com.kennywgx.config.mybatisplus.IntegerListTypeHandler;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.type.JdbcType;
 
 
@@ -15,7 +17,7 @@ import org.apache.ibatis.type.JdbcType;
 public class UserDO {
 
     @TableId(type = IdType.AUTO)
-    private Long id;
+    private Integer id;
 
     @TableField("username")
     private String username;
@@ -26,5 +28,4 @@ public class UserDO {
     @TableField(value = "role_ids", jdbcType = JdbcType.VARCHAR,
             typeHandler = IntegerListTypeHandler.class)
     private IntegerList roleIds;
-
 }

@@ -15,10 +15,10 @@ import org.apache.ibatis.type.JdbcType;
 public class PermissionDO {
 
     @TableId(type = IdType.AUTO)
-    private Long id;
+    private Integer id;
 
     @TableField("parent_id")
-    private Long parentId;
+    private Integer parentId;
 
     @TableField("name")
     private String name;

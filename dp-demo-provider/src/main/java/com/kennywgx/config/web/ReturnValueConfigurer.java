@@ -59,12 +59,16 @@ public class ReturnValueConfigurer implements InitializingBean {
 
         @Override
         public void handleReturnValue(Object o, MethodParameter methodParameter, ModelAndViewContainer modelAndViewContainer, NativeWebRequest nativeWebRequest) throws Exception {
-            Map<String, Object> result = new HashMap<>();
-            result.put("success", true);
-            result.put("code", "1");
-            result.put("payload", o);
+            if (o instanceof DemoResponse) {
+                delegate.handleReturnValue(o, methodParameter, modelAndViewContainer, nativeWebRequest);
+            } else {
+                Map<String, Object> result = new HashMap<>();
+                result.put("success", true);
+                result.put("code", "1");
+                result.put("payload", o);
 
-            delegate.handleReturnValue(result, methodParameter, modelAndViewContainer, nativeWebRequest);
+                delegate.handleReturnValue(result, methodParameter, modelAndViewContainer, nativeWebRequest);
+            }
         }
     }
 }
