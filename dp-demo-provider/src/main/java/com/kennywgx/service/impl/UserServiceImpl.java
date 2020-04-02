@@ -20,7 +20,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
-import java.util.*;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -104,6 +106,28 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
         if (!success)
             throw new DemoException("数据异常");
         return userDO;
+    }
+
+    @Override
+    public UserDO updateRoles(Integer userId, List<String> roles) {
+        UserDO user = getById(userId);
+        if (null == user)
+            throw new DemoException("用户不存在");
+
+        if (roles.isEmpty())
+            user.setRoleIds(null);
+        else {
+            // 根据role name list查询role id list
+            List<Integer> roleIds = roleService.list(Wrappers.<RoleDO>lambdaQuery()
+                    .select(RoleDO::getId)
+                    .in(RoleDO::getRoleName, roles))
+                    .stream()// 将查询结果转为List<Integer>
+                    .map(RoleDO::getId)
+                    .collect(Collectors.toList());
+            user.setRoleIds(IntegerList.toIntegerList(roleIds));
+        }
+        updateById(user);
+        return user;
     }
 
 }

@@ -20,6 +20,7 @@ import java.util.Set;
 @Slf4j
 @Configuration
 public class ShiroConfiguration {
+
     @Bean
     public Realm realm(JWTManager jwtManager) {
         return new OnlyParseJWTRealm("one", jwtManager) {

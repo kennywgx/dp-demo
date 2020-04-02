@@ -49,3 +49,5 @@ shiro:
         - /v1/**
       anon:
         - /**
+mybatis-plus:
+  type-handlers-package: com.kennywgx.config.mybatisplus.typehandler

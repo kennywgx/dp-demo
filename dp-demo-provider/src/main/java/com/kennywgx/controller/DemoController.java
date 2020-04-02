@@ -16,8 +16,6 @@ import static com.deepexi.pojo.converter.utils.ConverterUtils.convert;
 @RequestMapping("demo")
 @Payload
 public class DemoController {
-    @Autowired
-    private DemoService service;
 
     @GetMapping("greeting")
     public String sayHello() {
@@ -36,7 +34,7 @@ public class DemoController {
 
     @GetMapping("biz-error")
     public void bizerror() {
-        throw new DemoException();
+        throw new DemoException("biz-error");
     }
 
     @Data

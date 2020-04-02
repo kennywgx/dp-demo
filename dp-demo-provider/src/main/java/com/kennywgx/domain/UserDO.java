@@ -4,11 +4,10 @@ import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.kennywgx.config.mybatisplus.IntegerList;
-import com.kennywgx.config.mybatisplus.IntegerListTypeHandler;
+import com.kennywgx.config.mybatisplus.typehandler.IntegerListTypeHandler;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.apache.ibatis.type.JdbcType;
 
 
@@ -28,4 +27,6 @@ public class UserDO {
     @TableField(value = "role_ids", jdbcType = JdbcType.VARCHAR,
             typeHandler = IntegerListTypeHandler.class)
     private IntegerList roleIds;
+
+
 }

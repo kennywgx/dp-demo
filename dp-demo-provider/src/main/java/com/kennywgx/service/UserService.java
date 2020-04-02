@@ -13,5 +13,8 @@ public interface UserService extends IService<UserDO> {
     String login(String username, String password);
 
     UserDO register(String username, String password, String role);
+
+    UserDO updateRoles(Integer userId, List<String> roles);
+
 }
 
