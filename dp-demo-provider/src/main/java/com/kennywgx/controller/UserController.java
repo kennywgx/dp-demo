@@ -1,5 +1,6 @@
 package com.kennywgx.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.deepexi.pojo.converter.utils.ConverterUtils;
 import com.github.taccisum.shiro.web.autoconfigure.stateless.support.jwt.JWTManager;
 import com.kennywgx.config.web.DemoResponse;
@@ -28,7 +29,7 @@ public class UserController {
 
     @ApiOperation("查看所有用户")
     @GetMapping("/")
-    @RequiresPermissions("system:user:view")
+    @RequiresPermissions("system:user:manage")
     public DemoResponse<List<UserVO>> listAll() {
         List<UserDO> userDOList = userService.listAll();
         return DemoResponse.success(ConverterUtils.convertAll(userDOList, UserVO.class));

@@ -55,7 +55,8 @@ public class GlobalExceptionHanlder {
     @ResponseStatus(HttpStatus.FORBIDDEN)
     @ExceptionHandler(value = UnauthorizedException.class)
     public DemoResponse<String> handleUnauthorizedException(Exception e) {
-        return DemoResponse.fail("无权限");
+//        return DemoResponse.fail("无权限");
+        return DemoResponse.fail(e.getMessage());
     }
 
     /**
