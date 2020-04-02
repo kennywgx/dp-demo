@@ -1,5 +1,6 @@
 package com.kennywgx.config;
 
+import com.github.taccisum.shiro.web.autoconfigure.stateless.support.jwt.Payload;
 import com.kennywgx.config.mybatisplus.ApplicationMetaObjectHandler;
 import com.kennywgx.util.AuthUtils;
 import org.springframework.context.annotation.Configuration;
@@ -18,8 +19,10 @@ public class ApplicationConfiguration {
         return new ApplicationMetaObjectHandler.RuntimeData() {
             @Override
             public String getUserId() {
-                Optional<Object> userId = Optional.ofNullable(AuthUtils.getPayload().get("userId"));
-                return userId.orElse("0").toString();
+                Payload payload = AuthUtils.getPayload();
+                if (null == payload || null == payload.get("userId"))
+                    return null;
+                return payload.get("userId").toString();
             }
 
             @Override

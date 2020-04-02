@@ -10,7 +10,8 @@ public abstract class AuthUtils {
     }
 
     public static Payload getPayload() {
-        return getPrincipal().getPayload();
+        JWTPrincipal principal = getPrincipal();
+        return principal == null ? null : principal.getPayload();
     }
 
     private static JWTPrincipal getPrincipal() {
