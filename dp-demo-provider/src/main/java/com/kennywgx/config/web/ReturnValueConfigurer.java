@@ -17,7 +17,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Configuration
+//@Configuration
 public class ReturnValueConfigurer implements InitializingBean {
     @Autowired
     private RequestMappingHandlerAdapter adapter;

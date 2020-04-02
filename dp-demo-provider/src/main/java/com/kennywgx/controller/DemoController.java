@@ -13,27 +13,15 @@ import org.springframework.web.bind.annotation.RestController;
 import static com.deepexi.pojo.converter.utils.ConverterUtils.convert;
 
 @RestController
-@RequestMapping("v1/demo")
+@RequestMapping("demo")
 @Payload
 public class DemoController {
     @Autowired
     private DemoService service;
 
-    @GetMapping("role/staff")
-    @RequiresRoles("STAFF")
-    public String roleStaff() {
-        return "role staff";
-    }
-
-    @GetMapping("permission/user/view")
-    @RequiresPermissions("system:user:view")
-    public String permissionUserView() {
-        return "permission user view";
-    }
-
     @GetMapping("greeting")
     public String sayHello() {
-        return "welcome!";
+        return "welcome!中文";
     }
 
     @GetMapping("convert")
