@@ -56,8 +56,8 @@ public class ShiroConfiguration {
     @Bean
     public PayloadTemplate payloadTemplate() {
         PayloadTemplate payloadTemplate = new DefaultPayloadTemplate("one");
-        payloadTemplate.addField("userId", Long.class);
-        payloadTemplate.addField("tenantId", Long.class);
+        payloadTemplate.addField("userId", Integer.class);
+        payloadTemplate.addField("tenantId", Integer.class);
         payloadTemplate.addField("username", String.class);
         payloadTemplate.addField("roles", Set.class);
         payloadTemplate.addField("permissions", Set.class);
