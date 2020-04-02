@@ -76,7 +76,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, UserDO> implements 
         // 设置JWTToken的payload信息
         Payload payload = new Payload();
         payload.put("userId", user.getId());
-        payload.put("tenantId", 1L);
+        payload.put("tenantId", 1);
         payload.put("username", username);
         payload.put("roles", roleStringSet);
         payload.put("permissions", permissionStringSet);
